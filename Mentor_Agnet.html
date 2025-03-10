@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Agnet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+        }
+
+        .container {
+            width: 380px;
+            height: 650px;
+            background: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            transition: 0.4s ease-in-out;
+        }
+
+        .branding {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #f8f9fa;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .branding h1 {
+            font-size: 32px;
+            color: #007bff;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .branding p {
+            font-size: 15px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .branding .logo {
+            width: 80px;
+            height: 80px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .chat-app {
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            background: #ffffff;
+        }
+
+        .chat-header {
+            background: #007bff;
+            color: white;
+            padding: 18px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .chat-body {
+            flex: 1;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .chat-footer {
+            background: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .send-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #0056b3;
+        }
+
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            transition: 0.3s ease;
+        }
+
+        .floating-chat:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Branding Section (Shown When Chat is Closed) -->
+        <div class="branding" id="branding">
+            <div class="logo">M</div>
+            <h1>Mentor Agnet</h1>
+            <p>Created by Devendra Ahire</p>
+        </div>
+
+        <!-- Chatbot Section -->
+        <div class="chat-app" id="chatApp">
+            <div class="chat-header"></div>
+            <div class="chat-body">
+                <iframe src="https://www.chatbase.co/chatbot-iframe/Vzphp1roxwVkzexR5ea-g"></iframe>
+            </div>
+            <div class="chat-footer">
+                <button class="send-btn" onclick="closeChat()">Close Chat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div class="floating-chat" id="chatButton" onclick="openChat()">💬</div>
+
+    <script>
+        function openChat() {
+            document.getElementById("branding").style.display = "none";
+            document.getElementById("chatApp").style.display = "flex";
+            document.getElementById("chatButton").style.display = "none";
+        }
+
+        function closeChat() {
+            document.getElementById("branding").style.display = "flex";
+            document.getElementById("chatApp").style.display = "none";
+            document.getElementById("chatButton").style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
